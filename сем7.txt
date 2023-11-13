@@ -1,0 +1,98 @@
+from collections import defaultdict
+     
+
+# Задание 1
+string1 = 'abcdef'
+dic1 = {char: i for i, char in enumerate(string1)}
+print(dic1)
+     
+
+# Задание 2
+l1 = ['a', 'b', 'x', 'y']
+count_elements = sum(1 for item in l1 if item in dic1)
+print(count_elements)
+     
+
+# Задание 3
+string2 = 'evgene_o'
+dic2 = defaultdict(int)
+for char in string2:
+    dic2[char] += 1
+print(dic2)
+     
+
+# Задание 4
+count_lowercase = sum(dic2[char] for char in dic2 if char.islower())
+print(count_lowercase)
+     
+
+# Задание 5
+dic3 = {'g': 4, 'h': 5}
+dic4 = {**dic1, **dic2, **dic3}
+print(dic4)
+     
+
+# Задание 6
+sum_values = sum(dic4.values())
+print(sum_values)
+     
+
+# Задание 7
+product_values = 1
+for value in dic4.values():
+    product_values *= value
+print(product_values)
+     
+
+# Задание 8
+sum_key_value_product = sum(key * value for key, value in dic4.items())
+print(sum_key_value_product)
+     
+
+# Задание 9
+dic5 = {'a': 1, 'b': 2}
+dic6 = {'a': 1, 'b': 2, 'c': 3}
+dic7 = {key: dic6[key] for key in dic6 if key not in dic5}
+print(dic7)
+
+     
+
+# Задание 10
+dic8 = {**dic5, **dic6}
+print(dic8)
+     
+
+# Задание 11
+ri1 = [3, 1, 2, 4, 3, 5]
+ri1_sorted_unique = sorted(set(ri1))
+print(ri1_sorted_unique)
+     
+
+# Задание 11.2
+list_of_lists = [[1, 2, 3], [4, 5, 6, 7], [9, 2]]
+result_list = [lst[0] for lst in list_of_lists] + [lst[-1] for lst in list_of_lists]
+print(result_list)
+     
+
+# Задание 11.3
+for char, count in list(dic2.items()):
+    if count < 5:
+        del dic2[char]
+print(dic2)
+     
+
+# Задание 4.12
+bag = []
+while True:
+    items = input("Введите значение или значения, разделенные запятой: ").split(',')
+    if not items[0]:
+        break
+    for item in items:
+        if item in bag:
+            print(f"Значение {item} уже есть в мешке!")
+        else:
+            if len(bag) >= 5:
+                removed_item = bag.pop(0)
+                print(f"Из мешка извлечено значение: {removed_item}")
+            bag.append(item)
+print("Содержимое мешка:", bag)
